@@ -7,7 +7,6 @@
     <title>Detalhes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -22,14 +21,13 @@
                 <ul class="navbar-nav ms-auto" id="navbarMenu">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Início</a>
-                        <!-- Itens para utilizadores não autenticados -->
+                    </li>
                     <li class="nav-item" id="navLogin">
                         <a class="nav-link" href="login.html">Entrar</a>
                     </li>
                     <li class="nav-item" id="navRegisto">
                         <a class="nav-link btn-primary-custom" href="registo.html">Registar</a>
                     </li>
-                    <!-- Itens para utilizadores autenticados -->
                     <li class="nav-item dropdown" id="navUser" style="display: none;">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,6 +35,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#" id="logoutBtn">Sair</a></li>
+                            <li><a class="dropdown-item" href="minhasReservas.html">Minhas Reservas</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -50,12 +49,12 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Início</a></li>
                 <li class="breadcrumb-item"><a href="pesquisa.html">Pesquisa</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Hotel Vista Mar</li>
+                <li class="breadcrumb-item active" aria-current="page">Página de Detalhes</li>
             </ol>
         </nav>
 
+        <!-- Cabeçalho e Galeria em col-lg-8 -->
         <div class="row">
-            <!-- Coluna principal -->
             <div class="col-lg-8">
                 <!-- Cabeçalho do alojamento -->
                 <div class="mb-4">
@@ -100,47 +99,60 @@
                             class="img-fluid rounded gallery-photo" alt="Restaurante">
                     </div>
                 </div>
+            </div>
+        </div>
 
+        <!-- Todo o conteúdo abaixo ocupa 100% da largura -->
+        <div class="row">
+            <div class="col-12">
                 <!-- Descrição -->
                 <section class="mb-4">
                     <h3 class="h4 mb-3">Sobre este alojamento</h3>
-                    <p></p>
+                    <p>Desfrute de uma estadia memorável no Hotel Vista Mar, localizado no coração do Porto com vistas deslumbrantes sobre o oceano Atlântico.</p>
                 </section>
 
                 <!-- Comodidades -->
                 <section class="mb-4">
                     <h3 class="h4 mb-3">Comodidades</h3>
                     <div class="row g-3">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="amenity-item">
+                                <i class="bi bi-wifi me-2"></i>Wi-Fi gratuito
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="amenity-item">
+                                <i class="bi bi-p-circle me-2"></i>Estacionamento
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="amenity-item">
+                                <i class="bi bi-water me-2"></i>Piscina
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="amenity-item">
+                                <i class="bi bi-cup-hot me-2"></i>Restaurante
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="amenity-item">
+                                <i class="bi bi-wind me-2"></i>Ar condicionado
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="amenity-item">
+                                <i class="bi bi-dumbbell me-2"></i>Ginásio
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="amenity-item">
+                                <i class="bi bi-reception-4 me-2"></i>Receção 24h
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="amenity-item">
+                                <i class="bi bi-shield-check me-2"></i>Cofre
                             </div>
                         </div>
                     </div>
@@ -183,11 +195,11 @@
                     <!-- Quarto 1 -->
                     <div class="card mb-3 room-card">
                         <div class="row g-0">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400"
                                     class="img-fluid room-img" alt="Quarto Single">
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-9">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-start">
                                         <div>
@@ -217,11 +229,11 @@
                     <!-- Quarto 2 -->
                     <div class="card mb-3 room-card">
                         <div class="row g-0">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400"
                                     class="img-fluid room-img" alt="Quarto Double">
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-9">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-start">
                                         <div>
@@ -253,11 +265,11 @@
                     <!-- Quarto 3 -->
                     <div class="card mb-3 room-card">
                         <div class="row g-0">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400"
                                     class="img-fluid room-img" alt="Quarto Twin">
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-9">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-start">
                                         <div>
@@ -287,11 +299,11 @@
                     <!-- Quarto sem disponibilidade -->
                     <div class="card mb-3 room-card unavailable">
                         <div class="row g-0">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=400"
                                     class="img-fluid room-img" alt="Suite">
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-9">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-start">
                                         <div>
@@ -320,12 +332,6 @@
                         </div>
                     </div>
                 </section>
-            </div>
-
-    
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -360,7 +366,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../JS/detalhe.js"></script>
 </body>
 
 </html>

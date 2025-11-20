@@ -39,7 +39,7 @@ function getStatusReserva(checkin, checkout) {
     if (hoje < dataCheckin) {
         return { texto: 'Futura', classe: 'bg-info', icone: 'calendar-event' };
     } else if (hoje >= dataCheckin && hoje <= dataCheckout) {
-        return { texto: 'Em andamento', classe: 'bg-success', icone: 'door-open' };
+        return { texto: 'Ativa', classe: 'bg-success', icone: 'door-open' };
     } else {
         return { texto: 'Concluída', classe: 'bg-secondary', icone: 'check-circle' };
     }
