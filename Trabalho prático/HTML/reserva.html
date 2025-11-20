@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva - AlojaMais</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">AlojaMais</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" id="navbarMenu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Início</a>
+                    </li>
+                    <!-- Itens para utilizadores não autenticados -->
+                    <li class="nav-item" id="navLogin">
+                        <a class="nav-link" href="login.html">Entrar</a>
+                    </li>
+                    <li class="nav-item" id="navRegisto">
+                        <a class="nav-link btn-primary-custom" href="registo.html">Registar</a>
+                    </li>
+                    <!-- Itens para utilizadores autenticados -->
+                    <li class="nav-item dropdown" id="navUser" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="userName">Utilizador</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#" id="logoutBtn">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container my-5">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+                <li class="breadcrumb-item"><a href="pesquisa.html">Pesquisa</a></li>
+                <li class="breadcrumb-item"><a href="#" id="breadcrumbDetalhe">Detalhes</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Reserva</li>
+            </ol>
+        </nav>
+
+        <!-- Alerta de mensagem -->
+        <div id="alertMessage" class="alert d-none" role="alert"></div>
+
+        <div class="row">
+            <!-- Coluna Principal - Informação do Alojamento e Detalhes da Reserva -->
+            <div class="col-lg-8">
+                <!-- Seção 1: Informação do Alojamento -->
+                <section class="card mb-4">
+                    <div class="card-header bg-white">
+                        <h3 class="h4 mb-0"><i class="bi bi-building me-2"></i>Informação do Alojamento</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <img id="alojamentoImagem" src="" class="img-fluid rounded" alt="Alojamento">
+                            </div>
+                            <div class="col-md-8">
+                                <h4 id="alojamentoNome" class="h5 mb-2"></h4>
+                                <p class="text-muted mb-2">
+                                    <span id="alojamentoTipo" class="badge bg-primary me-2"></span>
+                                    <span id="alojamentoLocalizacao"></span>
+                                </p>
+                                <div class="mb-2">
+                                    <span id="alojamentoRating" class="text-warning"></span>
+                                    <span id="alojamentoAvaliacoes" class="small text-muted ms-2"></span>
+                                </div>
+                                <p id="alojamentoDescricao" class="small text-muted mb-0"></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção 2: Detalhes da Reserva -->
+                <section class="card mb-4">
+                    <div class="card-header bg-white">
+                        <h3 class="h4 mb-0"><i class="bi bi-calendar-check me-2"></i>Detalhes da Reserva</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="reservaForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold"><i class="bi bi-calendar-check me-2"></i>Check-in</label>
+                                    <input type="date" class="form-control" id="checkin" name="checkin" required>
+                                    <small class="text-muted">A partir das 15:00</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold"><i class="bi bi-calendar-x me-2"></i>Check-out</label>
+                                    <input type="date" class="form-control" id="checkout" name="checkout" required>
+                                    <small class="text-muted">Até às 12:00</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold"><i class="bi bi-people me-2"></i>Número de Hóspedes</label>
+                                    <select class="form-select" id="hospedes" name="hospedes" required>
+                                        <option value="">Selecione</option>
+                                        <option value="1">1 adulto</option>
+                                        <option value="2">2 adultos</option>
+                                        <option value="3">2 adultos, 1 criança</option>
+                                        <option value="4">2 adultos, 2 crianças</option>
+                                        <option value="5">Mais de 4 pessoas</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold"><i class="bi bi-door-open me-2"></i>Tipo de Quarto</label>
+                                    <select class="form-select" id="tipoQuarto" name="tipoQuarto" required>
+                                        <option value="">Selecione um quarto</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold"><i class="bi bi-person me-2"></i>Dados do Hóspede Principal</label>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="nomeHospede" name="nomeHospede" placeholder="Nome completo" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" class="form-control" id="emailHospede" name="emailHospede" placeholder="Email" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="tel" class="form-control" id="telefoneHospede" name="telefoneHospede" placeholder="Telefone" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="documentoHospede" name="documentoHospede" placeholder="Nº de documento (CC/Passaporte)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold"><i class="bi bi-chat-left-text me-2"></i>Pedidos Especiais (opcional)</label>
+                                    <textarea class="form-control" id="pedidosEspeciais" name="pedidosEspeciais" rows="3" placeholder="Ex: Cama extra, quarto com vista, etc."></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Seção 3: Considerações sobre a Avaliação -->
+                <section class="card mb-4">
+                    <div class="card-header bg-white">
+                        <h3 class="h4 mb-0"><i class="bi bi-star me-2"></i>Considerações sobre a Avaliação</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info mb-3">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <strong>Importante:</strong> Após a sua estadia, terá a oportunidade de avaliar o alojamento e a sua experiência.
+                        </div>
+                        
+                        <h5 class="h6 mb-3">O que pode avaliar:</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                <strong>Qualidade do alojamento:</strong> Limpeza, conforto, comodidades
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                <strong>Localização:</strong> Acessibilidade, proximidade a pontos de interesse
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                <strong>Serviço:</strong> Atendimento, receção, staff
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                <strong>Relação qualidade-preço:</strong> Se o preço corresponde à qualidade oferecida
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                <strong>Experiência geral:</strong> Recomendaria este alojamento a outros viajantes?
+                            </li>
+                        </ul>
+
+                        <div class="mt-4 p-3 bg-light rounded">
+                            <h6 class="mb-2"><i class="bi bi-lightbulb me-2"></i>Dicas para uma boa avaliação:</h6>
+                            <ul class="small mb-0">
+                                <li>Seja específico e honesto na sua avaliação</li>
+                                <li>Mencione tanto os pontos positivos quanto áreas de melhoria</li>
+                                <li>As suas avaliações ajudam outros viajantes a tomar decisões informadas</li>
+                                <li>As avaliações são verificadas para garantir autenticidade</li>
+                            </ul>
+                        </div>
+
+                        <div class="form-check mt-3">
+                            <input class="form-check-input" type="checkbox" id="aceitarTermos" required>
+                            <label class="form-check-label" for="aceitarTermos">
+                                Li e aceito os <a href="#" class="text-decoration-none">termos e condições</a> e a <a href="#" class="text-decoration-none">política de cancelamento</a>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar - Resumo da Reserva -->
+            <div class="col-lg-4">
+                <div class="card sticky-top" style="top: 20px;">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="h5 mb-0"><i class="bi bi-receipt me-2"></i>Resumo da Reserva</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Preço por noite:</span>
+                                <span id="precoNoite" class="fw-bold">€0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Número de noites:</span>
+                                <span id="numeroNoites" class="fw-bold">0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Subtotal:</span>
+                                <span id="subtotal" class="fw-bold">€0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Taxa de serviço:</span>
+                                <span id="taxaServico" class="fw-bold">€0</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <span class="h5 mb-0">Total:</span>
+                                <span id="total" class="h5 mb-0 text-primary">€0</span>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning small mb-3">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            <strong>Política de cancelamento:</strong> Cancelamento gratuito até 2 dias antes da data de check-in.
+                        </div>
+
+                        <button type="button" id="btnConfirmarReserva" class="btn btn-primary w-100 mb-2">
+                            <i class="bi bi-check-circle me-2"></i>Confirmar Reserva
+                        </button>
+                        <p class="small text-muted text-center mb-0">
+                            <i class="bi bi-lock me-1"></i>
+                            Pagamento seguro. Ainda não será cobrado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light border-top mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>AlojaMais</h5>
+                    <p class="text-muted small">Encontre o alojamento perfeito para a sua viagem.</p>
+                </div>
+                <div class="col-md-3">
+                    <h6>Links úteis</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="text-decoration-none text-muted">Sobre nós</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Contactos</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Termos e condições</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6>Suporte</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="text-decoration-none text-muted">Ajuda</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center text-muted small mb-0">© 2025 AlojaMais. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JS/reserva.js"></script>
+</body>
+</html>
+
