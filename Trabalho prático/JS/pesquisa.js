@@ -192,34 +192,6 @@ function exibirResultados() {
     }
 }
 
-// Função para atualizar navbar
-function atualizarNavbar() {
-    var currentUserStr = localStorage.getItem('currentUser');
-    var navLogin = document.getElementById('navLogin');
-    var navRegisto = document.getElementById('navRegisto');
-    var navUser = document.getElementById('navUser');
-    var userName = document.getElementById('userName');
-    
-    if (currentUserStr) {
-        var currentUser = JSON.parse(currentUserStr);
-        navLogin.style.display = 'none';
-        navRegisto.style.display = 'none';
-        navUser.style.display = 'block';
-        userName.textContent = currentUser.nome || 'Utilizador';
-    } else {
-        navLogin.style.display = 'block';
-        navRegisto.style.display = 'block';
-        navUser.style.display = 'none';
-    }
-}
-
-// Função de logout
-function fazerLogout() {
-    localStorage.removeItem('currentUser');
-    atualizarNavbar();
-    window.location.href = 'index.html';
-}
-
 // Executar quando a página carregar
 document.addEventListener('DOMContentLoaded', function() {
     atualizarNavbar();

@@ -1,13 +1,4 @@
-// ========================================
-// FUNÇÕES COMUNS - AlojaMais
-// ========================================
-
-// ============ AUTENTICAÇÃO ============
-
-/**
- * Atualiza a navbar baseado no estado de autenticação
- * Mostra/esconde elementos conforme o utilizador está logado
- */
+  //Atualiza a navbar baseado no estado de autenticação
 function atualizarNavbar() {
     const currentUserStr = localStorage.getItem('currentUser');
     const navLogin = document.getElementById('navLogin');
@@ -30,10 +21,6 @@ function atualizarNavbar() {
     }
 }
 
-/**
- * Faz logout do utilizador
- * Remove dados da sessão e redireciona para a página inicial
- */
 function fazerLogout() {
     localStorage.removeItem('currentUser');
     atualizarNavbar();
@@ -59,10 +46,9 @@ function getCurrentUser() {
     return null;
 }
 
-/**
- * Inicializa eventos de autenticação
- * Deve ser chamado no DOMContentLoaded
- */
+
+ //Inicializa eventos de autenticação
+
 function inicializarAutenticacao() {
     atualizarNavbar();
     
@@ -75,12 +61,11 @@ function inicializarAutenticacao() {
     }
 }
 
-// ============ DATAS E FORMATAÇÃO ============
 
 /**
  * Formata uma data no formato DD/MM/YYYY
  * @param {string} data - Data no formato YYYY-MM-DD
- * @returns {string} Data formatada
+ *@returns {string} Data formatada
  */
 function formatarData(data) {
     const d = new Date(data);
@@ -102,7 +87,6 @@ function definirDataMinima(inputId, minDate = new Date()) {
     }
 }
 
-// ============ VALIDAÇÕES ============
 
 /**
  * Valida se as datas de check-in e check-out são válidas
@@ -140,7 +124,6 @@ function validarDatas(checkin, checkout) {
     return { valido: true, mensagem: '' };
 }
 
-// ============ ALERTAS E NOTIFICAÇÕES ============
 
 /**
  * Mostra um alerta na página
@@ -176,7 +159,7 @@ function mostrarAlerta(mensagem) {
 }
 
 
-// ============ UTILIDADES ============
+
 
 /**
  * Obtém parâmetros da URL
@@ -202,8 +185,6 @@ function redirecionar(url, delay = 0) {
         window.location.href = url;
     }
 }
-
-// ============ INICIALIZAÇÃO AUTOMÁTICA ============
 
 // Executar quando o DOM estiver carregado (se não for sobrescrito)
 if (typeof inicializarPaginaEspecifica === 'undefined') {

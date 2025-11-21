@@ -41,34 +41,6 @@
     `;
         }
 
-        // Função para atualizar navbar baseado no estado de autenticação
-        function atualizarNavbar() {
-            const currentUserStr = localStorage.getItem('currentUser');
-            const navLogin = document.getElementById('navLogin');
-            const navRegisto = document.getElementById('navRegisto');
-            const navUser = document.getElementById('navUser');
-            const userName = document.getElementById('userName');
-            
-            if (currentUserStr) {
-                const currentUser = JSON.parse(currentUserStr);
-                navLogin.style.display = 'none';
-                navRegisto.style.display = 'none';
-                navUser.style.display = 'block';
-                userName.textContent = currentUser.nome || 'Utilizador';
-            } else {
-                navLogin.style.display = 'block';
-                navRegisto.style.display = 'block';
-                navUser.style.display = 'none';
-            }
-        }
-
-        // Função de logout
-        function fazerLogout() {
-            localStorage.removeItem('currentUser');
-            atualizarNavbar();
-            window.location.href = 'index.html';
-        }
-
         // Função para redirecionar para página de reserva
         function redirecionarParaReserva(dadosReserva) {
             // Salvar dados no localStorage
@@ -119,76 +91,5 @@
                     });
                 });
             });
-
-            // Event listeners para formulário da sidebar
-            const sidebarForm = document.getElementById('sidebarReservaForm');
-            if (sidebarForm) {
-                // Definir data mínima
-                const hoje = new Date().toISOString().split('T')[0];
-                const sidebarCheckin = document.getElementById('sidebarCheckin');
-                const sidebarCheckout = document.getElementById('sidebarCheckout');
-                
-                if (sidebarCheckin) {
-                    sidebarCheckin.min = hoje;
-                    sidebarCheckin.addEventListener('change', function() {
-                        if (this.value) {
-                            const dataCheckin = new Date(this.value);
-                            dataCheckin.setDate(dataCheckin.getDate() + 1);
-                            if (sidebarCheckout) {
-                                sidebarCheckout.min = dataCheckin.toISOString().split('T')[0];
-                            }
-                        }
-                        atualizarResumoSidebar();
-                    });
-                }
-                
-                if (sidebarCheckout) {
-                    sidebarCheckout.min = hoje;
-                    sidebarCheckout.addEventListener('change', atualizarResumoSidebar);
-                }
-                
-                const sidebarTipoQuarto = document.getElementById('sidebarTipoQuarto');
-                if (sidebarTipoQuarto) {
-                    sidebarTipoQuarto.addEventListener('change', atualizarResumoSidebar);
-                }
-                
-                const sidebarHospedes = document.getElementById('sidebarHospedes');
-                if (sidebarHospedes) {
-                    sidebarHospedes.addEventListener('change', atualizarResumoSidebar);
-                }
-
-                // Submeter formulário
-                sidebarForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const checkin = sidebarCheckin?.value;
-                    const checkout = sidebarCheckout?.value;
-                    const hospedes = sidebarHospedes?.value;
-                    const tipoQuarto = sidebarTipoQuarto?.value;
-                    
-                    if (!checkin || !checkout) {
-                        alert('Por favor, selecione as datas de check-in e check-out.');
-                        return;
-                    }
-                    
-                    if (!hospedes) {
-                        alert('Por favor, selecione o número de hóspedes.');
-                        return;
-                    }
-                    
-                    if (!tipoQuarto) {
-                        alert('Por favor, selecione um tipo de quarto.');
-                        return;
-                    }
-                    
-                    redirecionarParaReserva({
-                        hotelId: id,
-                        checkin: checkin,
-                        checkout: checkout,
-                        hospedes: hospedes,
-                        tipoQuarto: tipoQuarto
-                    });
-                });
-            }
         });
     
