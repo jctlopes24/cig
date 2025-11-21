@@ -31,14 +31,14 @@ const hoteis = {
             { nome: "Vista Mar", preco: 180 }
         ]
     },
-    "hotel-leiria": {
-        nome: "Resort Algarve Sol",
-        localizacao: "Algarve, Portugal",
+    "hotel-geres": {
+        nome: "Hotel Gerês",
+        localizacao: " Gerês, Portugal",
         estrelas: "★★★★★",
-        imagem: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800",
+        imagem: "https://images.unsplash.com/photo-1606402179428-a57976d71fa4?w=800",
         quartos: [
-            { nome: "Standard", preco: 150 },
-            { nome: "Vista Mar", preco: 180 }
+            { nome: "Single", preco: 75 },
+            { nome: "Vista Serra", preco: 180 }
         ]
     }
 };
