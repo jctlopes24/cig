@@ -11,7 +11,7 @@ const hoteis = [
         avaliacao: '4.5/5',
         numAvaliacoes: 245,
         descricao: 'Hotel com vista privilegiada para o oceano Atlântico, combinando conforto moderno e hospitalidade tradicional portuguesa.',
-        preco: 96,
+        preco: 75,
         imagem: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600',
       
     },
@@ -25,7 +25,7 @@ const hoteis = [
         avaliacao: '4.3/5',
         numAvaliacoes: 195,
         descricao: 'No coração da cidade, perfeito para turismo. Wi-Fi gratuito e localização privilegiada para explorar Lisboa.',
-        preco: 68,
+        preco: 75,
         imagem: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600',
      
     },
@@ -39,7 +39,7 @@ const hoteis = [
         avaliacao: '4.7/5',
         numAvaliacoes: 310,
         descricao: 'Resort de luxo à beira-mar com três piscinas, spa, restaurante gourmet e acesso direto à praia.',
-        preco: 150,
+        preco: 75,
         imagem: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600',
 
     },
