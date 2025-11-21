@@ -1,48 +1,3 @@
-// Dados dos alojamentos (mesmos da pesquisa.html)
-const hoteis = [
-    {
-        id: 'vista-mar',
-        nome: 'Hotel Vista Mar',
-        cidade: 'Porto',
-        localizacao: 'Porto, Portugal',
-        tipo: 'Hotel',
-        estrelas: '★★★★☆',
-        avaliacao: '4.5/5',
-        numAvaliacoes: 245,
-        descricao: 'Hotel com vista privilegiada para o oceano Atlântico, combinando conforto moderno e hospitalidade tradicional portuguesa.',
-        preco: 96,
-        imagem: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400',
-        comodidades: ['wifi', 'piscina']
-    },
-    {
-        id: 'pousada-centro',
-        nome: 'Pousada do Centro',
-        cidade: 'Lisboa',
-        localizacao: 'Lisboa, Portugal',
-        tipo: 'Pousada',
-        estrelas: '★★★☆☆',
-        avaliacao: '4.3/5',
-        numAvaliacoes: 195,
-        descricao: 'No coração da cidade, perfeito para turismo. Wi-Fi gratuito e localização privilegiada para explorar Lisboa.',
-        preco: 68,
-        imagem: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400',
-        comodidades: ['wifi']
-    },
-    {
-        id: 'algarve-sol',
-        nome: 'Resort Algarve Sol',
-        cidade: 'Algarve',
-        localizacao: 'Algarve, Portugal',
-        tipo: 'Resort',
-        estrelas: '★★★★★',
-        avaliacao: '4.7/5',
-        numAvaliacoes: 310,
-        descricao: 'Resort de luxo à beira-mar com três piscinas, spa, restaurante gourmet e acesso direto à praia.',
-        preco: 150,
-        imagem: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400',
-        comodidades: ['wifi', 'piscina']
-    }
-];
 
 // Função para obter utilizador atual
 function getCurrentUser() {
@@ -146,35 +101,6 @@ function exibirRecomendacoes() {
             '<a href="detalhe.html?id=' + h.id + '" class="btn btn-primary">Ver Detalhes</a></div></div></div></div>';
     }
     container.innerHTML = html;
-}
-
-// Função para atualizar navbar
-function atualizarNavbar() {
-    var currentUserStr = localStorage.getItem('currentUser');
-    var navLogin = document.getElementById('navLogin');
-    var navRegisto = document.getElementById('navRegisto');
-    var navUser = document.getElementById('navUser');
-    var userName = document.getElementById('userName');
-
-    if (currentUserStr) {
-        var currentUser = JSON.parse(currentUserStr);
-        navLogin.style.display = 'none';
-        navRegisto.style.display = 'none';
-        navUser.style.display = 'block';
-        userName.textContent = currentUser.nome || 'Utilizador';
-    } else {
-        navLogin.style.display = 'block';
-        navRegisto.style.display = 'block';
-        navUser.style.display = 'none';
-    }
-}
-
-// Função de logout
-function fazerLogout() {
-    localStorage.removeItem('currentUser');
-    atualizarNavbar();
-    exibirRecomendacoes(); // Atualizar recomendações (vai esconder a secção)
-    window.location.href = 'index.html';
 }
 
 // Executar quando a página carregar

@@ -11,7 +11,7 @@ const hoteis = [
         avaliacao: '4.5/5',
         numAvaliacoes: 245,
         descricao: 'Hotel com vista privilegiada para o oceano Atlântico, combinando conforto moderno e hospitalidade tradicional portuguesa.',
-        preco: 96,
+        preco: 75,
         imagem: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600',
       
     },
@@ -25,7 +25,7 @@ const hoteis = [
         avaliacao: '4.3/5',
         numAvaliacoes: 195,
         descricao: 'No coração da cidade, perfeito para turismo. Wi-Fi gratuito e localização privilegiada para explorar Lisboa.',
-        preco: 68,
+        preco: 75,
         imagem: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600',
      
     },
@@ -39,8 +39,22 @@ const hoteis = [
         avaliacao: '4.7/5',
         numAvaliacoes: 310,
         descricao: 'Resort de luxo à beira-mar com três piscinas, spa, restaurante gourmet e acesso direto à praia.',
-        preco: 150,
+        preco: 75,
         imagem: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600',
+
+    },
+    {
+        id: 'hotel-geres',
+        nome: 'Hotel Gerês',
+        cidade: 'Gerês',
+        localizacao: 'Gerês, Portugal',
+        tipo: 'Hotel',
+        estrelas: '★★★★★',
+        avaliacao: '4.7/5',
+        numAvaliacoes: 110,
+        descricao: 'Hotel de luxo na serra do Gerês com piscina interior, spa, restaurante gourmet e salão de jogos.',
+        preco: 75,
+        imagem: 'https://images.unsplash.com/photo-1606402179428-a57976d71fa4?w=600' ,
 
     }
 ];
@@ -190,34 +204,6 @@ function exibirResultados() {
         }
         container.innerHTML = html;
     }
-}
-
-// Função para atualizar navbar
-function atualizarNavbar() {
-    var currentUserStr = localStorage.getItem('currentUser');
-    var navLogin = document.getElementById('navLogin');
-    var navRegisto = document.getElementById('navRegisto');
-    var navUser = document.getElementById('navUser');
-    var userName = document.getElementById('userName');
-    
-    if (currentUserStr) {
-        var currentUser = JSON.parse(currentUserStr);
-        navLogin.style.display = 'none';
-        navRegisto.style.display = 'none';
-        navUser.style.display = 'block';
-        userName.textContent = currentUser.nome || 'Utilizador';
-    } else {
-        navLogin.style.display = 'block';
-        navRegisto.style.display = 'block';
-        navUser.style.display = 'none';
-    }
-}
-
-// Função de logout
-function fazerLogout() {
-    localStorage.removeItem('currentUser');
-    atualizarNavbar();
-    window.location.href = 'index.html';
 }
 
 // Executar quando a página carregar
