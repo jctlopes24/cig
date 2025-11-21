@@ -42,6 +42,20 @@ const hoteis = [
         preco: 150,
         imagem: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600',
 
+    },
+    {
+        id: 'hotel-leiria',
+        nome: 'Hotel Leiria',
+        cidade: 'Leiria',
+        localizacao: 'Leiria, Portugal',
+        tipo: 'Hotel',
+        estrelas: '★★★★★',
+        avaliacao: '4.7/5',
+        numAvaliacoes: 110,
+        descricao: 'Hotel de luxo no centro de leiria com piscina interior, spa, restaurante gourmet e sala de jogos.',
+        preco: 150,
+        imagem: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600',
+
     }
 ];
 

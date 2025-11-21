@@ -73,6 +73,34 @@
                     "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400",
                     "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400"
                 ]
+            },"hotel-leiria": {
+                nome: "Resort Algarve Sol",
+                tipo: "Resort",
+                localizacao: "Algarve, Portugal",
+                estrelas: "★★★★★",
+                rating: "4.7/5 (310 avaliações)",
+                descricao: `
+    O Resort Algarve Sol é um verdadeiro paraíso à beira-mar, localizado no coração do Algarve, uma das regiões mais ensolaradas de Portugal.
+    Rodeado por praias de areia dourada e jardins tropicais, o resort combina luxo, conforto e tranquilidade num só espaço.
+  `,
+                comodidades: [
+                    "Wi-Fi gratuito",
+                    "Piscinas exteriores e interiores",
+                    "Spa com circuito termal e massagens",
+                    "Restaurante gourmet e bar à beira da piscina",
+                    "Centro de fitness",
+                    "Estacionamento gratuito",
+                    "Serviço de quartos 24h",
+                    "Atividades para crianças",
+                    "Acesso direto à praia",
+                    "Pequeno-almoço incluído"
+                ],
+                imagens: [
+                    "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800",
+                    "https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=400",
+                    "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400",
+                    "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400"
+                ]
             },
 
 

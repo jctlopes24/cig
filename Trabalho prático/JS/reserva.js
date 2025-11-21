@@ -30,6 +30,16 @@ const hoteis = {
             { nome: "Standard", preco: 150 },
             { nome: "Vista Mar", preco: 180 }
         ]
+    },
+    "hotel-leiria": {
+        nome: "Resort Algarve Sol",
+        localizacao: "Algarve, Portugal",
+        estrelas: "★★★★★",
+        imagem: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800",
+        quartos: [
+            { nome: "Standard", preco: 150 },
+            { nome: "Vista Mar", preco: 180 }
+        ]
     }
 };
 
