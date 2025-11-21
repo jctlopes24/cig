@@ -12,34 +12,6 @@ function showAlert(message, type = 'danger') {
     }, 5000);
 }
 
-// Função para atualizar navbar baseado no estado de autenticação
-function atualizarNavbar() {
-    const currentUserStr = localStorage.getItem('currentUser');
-    const navLogin = document.getElementById('navLogin');
-    const navRegisto = document.getElementById('navRegisto');
-    const navUser = document.getElementById('navUser');
-    const userName = document.getElementById('userName');
-    
-    if (currentUserStr) {
-        const currentUser = JSON.parse(currentUserStr);
-        navLogin.style.display = 'none';
-        navRegisto.style.display = 'none';
-        navUser.style.display = 'block';
-        userName.textContent = currentUser.nome || 'Utilizador';
-    } else {
-        navLogin.style.display = 'block';
-        navRegisto.style.display = 'block';
-        navUser.style.display = 'none';
-    }
-}
-
-// Função de logout
-function fazerLogout() {
-    localStorage.removeItem('currentUser');
-    atualizarNavbar();
-    window.location.href = 'index.html';
-}
-
 // Atualizar navbar ao carregar
 document.addEventListener('DOMContentLoaded', function() {
     atualizarNavbar();

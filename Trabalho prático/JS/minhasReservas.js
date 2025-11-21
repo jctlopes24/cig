@@ -1,31 +1,3 @@
-// Função para atualizar navbar
-function atualizarNavbar() {
-    const currentUserStr = localStorage.getItem('currentUser');
-    const navLogin = document.getElementById('navLogin');
-    const navRegisto = document.getElementById('navRegisto');
-    const navUser = document.getElementById('navUser');
-    const userName = document.getElementById('userName');
-    
-    if (currentUserStr) {
-        const currentUser = JSON.parse(currentUserStr);
-        navLogin.style.display = 'none';
-        navRegisto.style.display = 'none';
-        navUser.style.display = 'block';
-        userName.textContent = currentUser.nome || 'Utilizador';
-        return true;
-    } else {
-        navLogin.style.display = 'block';
-        navRegisto.style.display = 'block';
-        navUser.style.display = 'none';
-        return false;
-    }
-}
-
-// Função de logout
-function fazerLogout() {
-    localStorage.removeItem('currentUser');
-    window.location.href = 'index.html';
-}
 
 // Função para determinar status da reserva
 function getStatusReserva(checkin, checkout) {

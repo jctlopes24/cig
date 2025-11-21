@@ -91,21 +91,6 @@ function formatarData(data) {
 }
 
 /**
- * Calcula o número de noites entre duas datas
- * @param {string} checkin - Data de check-in (YYYY-MM-DD)
- * @param {string} checkout - Data de check-out (YYYY-MM-DD)
- * @returns {number} Número de noites
- */
-function calcularNoites(checkin, checkout) {
-    if (!checkin || !checkout) return 0;
-    const dataCheckin = new Date(checkin);
-    const dataCheckout = new Date(checkout);
-    const diffTime = Math.abs(dataCheckout - dataCheckin);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays;
-}
-
-/**
  * Define a data mínima para inputs de data
  * @param {string} inputId - ID do input
  * @param {Date} minDate - Data mínima (opcional, padrão: hoje)
@@ -190,70 +175,6 @@ function mostrarAlerta(mensagem) {
     alert(mensagem);
 }
 
-// ============ PERFIL E HISTÓRICO ============
-
-/**
- * Adiciona uma pesquisa ao histórico do utilizador
- * @param {Object} criterios - Critérios da pesquisa
- */
-function adicionarPesquisaAoHistorico(criterios) {
-    const currentUser = getCurrentUser();
-    if (!currentUser) return;
-
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    
-    for (let i = 0; i < users.length; i++) {
-        if (users[i].email === currentUser.email) {
-            // Garantir que o perfil existe
-            if (!users[i].perfil) {
-                users[i].perfil = { historicoPesquisas: [], historicoReservas: [] };
-            }
-            if (!users[i].perfil.historicoPesquisas) {
-                users[i].perfil.historicoPesquisas = [];
-            }
-            
-            // Adicionar pesquisa
-            users[i].perfil.historicoPesquisas.push({
-                ...criterios,
-                data: new Date().toISOString()
-            });
-            
-            // Limitar a 20 pesquisas
-            if (users[i].perfil.historicoPesquisas.length > 20) {
-                users[i].perfil.historicoPesquisas.shift();
-            }
-            
-            localStorage.setItem('users', JSON.stringify(users));
-            break;
-        }
-    }
-}
-
-/**
- * Adiciona uma reserva ao histórico do utilizador
- * @param {Object} reserva - Dados da reserva
- */
-function adicionarReservaAoHistorico(reserva) {
-    const currentUser = getCurrentUser();
-    if (!currentUser) return;
-
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    
-    for (let i = 0; i < users.length; i++) {
-        if (users[i].email === currentUser.email) {
-            if (!users[i].perfil) {
-                users[i].perfil = { historicoReservas: [] };
-            }
-            if (!users[i].perfil.historicoReservas) {
-                users[i].perfil.historicoReservas = [];
-            }
-            
-            users[i].perfil.historicoReservas.push(reserva);
-            localStorage.setItem('users', JSON.stringify(users));
-            break;
-        }
-    }
-}
 
 // ============ UTILIDADES ============
 

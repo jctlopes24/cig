@@ -77,6 +77,7 @@
 
 
         };
+        
 
 // Quartos disponíveis por hotel
 const QUARTOS_POR_HOTEL = {
