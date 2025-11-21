@@ -54,7 +54,8 @@ const hoteis = [
         numAvaliacoes: 110,
         descricao: 'Hotel de luxo no centro de leiria com piscina interior, spa, restaurante gourmet e sala de jogos.',
         preco: 150,
-        imagem: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600',
+        imagem: 'https://images.unsplash.com/photo-1606402179428-a57976d71fa4?w=800'
+
 
     }
 ];
