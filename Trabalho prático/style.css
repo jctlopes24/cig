@@ -172,9 +172,4 @@ select:focus {
     outline-offset: 2px;
 }
 
-/* Estados de loading (para futuras implementações) */
-.loading {
-    opacity: 0.6;
-    pointer-events: none;
-}
 
