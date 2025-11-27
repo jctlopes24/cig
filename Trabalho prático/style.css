@@ -1,7 +1,7 @@
 /* Cores principais */
 :root {
     --primary-color: #8eb2d5;
-    --secondary-color: #f8f9fa;
+    --secondary-color: #ffffff;
     --text-dark: #333;
     --text-muted: #6c757d;
     --border-color: #dee2e6;
@@ -29,18 +29,6 @@ body {
 
 .nav-link:hover {
     color: var(--primary-color) !important;
-}
-
-.btn-primary-custom {
-    color: aqua;
-    background-color: var(--primary-color);
-    color: white !important;
-    border-radius: 5px;
-    padding: 0.5rem 1.5rem !important;
-}
-
-.btn-primary-custom:hover {
-    background-color: #d6dfe9;
 }
 
 /* Hero Section */
