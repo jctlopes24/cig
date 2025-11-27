@@ -17,10 +17,20 @@ function getCurrentUser() {
 
 // Função para gerar recomendações baseadas no histórico de pesquisas
 function gerarRecomendacoes(user) {
-    if (!user || !user.perfil || !user.perfil.historicoPesquisas) return [];
+    // Se não houver utilizador, não há recomendações
+    if (!user) return [];
 
-    var historico = user.perfil.historicoPesquisas;
-    if (historico.length === 0) return [];
+   
+    // Se não houver perfil/histórico, usamos um array vazio e depois o fallback
+    var historico = [];
+    if (user.perfil && Array.isArray(user.perfil.historicoPesquisas)) {
+        historico = user.perfil.historicoPesquisas;
+    }
+
+    // Se o histórico estiver vazio, devolvemos um conjunto padrão de recomendações
+    if (historico.length === 0) {
+        return hoteis.slice(0, 3); // 3 primeiros hotéis como padrão
+    }
 
     // Contar quantas vezes cada hotel foi pesquisado
     var contagem = {};
@@ -74,6 +84,15 @@ function exibirRecomendacoes() {
     var user = getCurrentUser();
     var secao = document.getElementById('recomendacoesSection');
     var container = document.getElementById('recomendacoesContainer');
+
+    // Logs de diagnóstico para verificar porque as recomendações podem não aparecer
+    console.log('recom: currentUser (raw) =', localStorage.getItem('currentUser'));
+    try {
+        console.log('recom: users count =', JSON.parse(localStorage.getItem('users') || '[]').length);
+    } catch (e) {
+        console.log('recom: erro ao parse users:', e);
+    }
+    console.log('recom: resolved user =', user);
 
     if (!user) {
         secao.style.display = 'none';
