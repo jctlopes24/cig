@@ -1,4 +1,3 @@
-
 // Função para obter utilizador atual
 function getCurrentUser() {
     var currentUserStr = localStorage.getItem('currentUser');
@@ -17,19 +16,25 @@ function getCurrentUser() {
 
 // Função para gerar recomendações baseadas no histórico de pesquisas
 function gerarRecomendacoes(user) {
-    // Se não houver utilizador, não há recomendações
-    if (!user) return [];
+    if (!user || !user.perfil || !user.perfil.historicoPesquisas) return [];
 
-   
-    // Se não houver perfil/histórico, usamos um array vazio e depois o fallback
-    var historico = [];
-    if (user.perfil && Array.isArray(user.perfil.historicoPesquisas)) {
-        historico = user.perfil.historicoPesquisas;
-    }
+    var historico = user.perfil.historicoPesquisas;
+    if (historico.length === 0) return [];
 
-    // Se o histórico estiver vazio, devolvemos um conjunto padrão de recomendações
-    if (historico.length === 0) {
-        return hoteis.slice(0, 3); // 3 primeiros hotéis como padrão
+    // Converter objeto hoteis para array
+    var hoteisArray = [];
+    for (var key in hoteis) {
+        if (hoteis.hasOwnProperty(key)) {
+            hoteisArray.push({
+                id: key,
+                nome: hoteis[key].nome,
+                localizacao: hoteis[key].localizacao,
+                tipo: hoteis[key].tipo,
+                descricao: hoteis[key].descricao,
+                imagem: hoteis[key].imagens[0],
+                preco: 96 // Preço promocional
+            });
+        }
     }
 
     // Contar quantas vezes cada hotel foi pesquisado
@@ -40,12 +45,12 @@ function gerarRecomendacoes(user) {
         if (!pesquisa.destino) continue;
 
         var destino = pesquisa.destino.toLowerCase();
-        for (var j = 0; j < hoteis.length; j++) {
-            var hotel = hoteis[j];
+        for (var j = 0; j < hoteisArray.length; j++) {
+            var hotel = hoteisArray[j];
             var nome = hotel.nome.toLowerCase();
-            var cidade = hotel.cidade.toLowerCase();
+            var localizacao = hotel.localizacao.toLowerCase();
 
-            if (nome.indexOf(destino) !== -1 || cidade.indexOf(destino) !== -1) {
+            if (nome.indexOf(destino) !== -1 || localizacao.indexOf(destino) !== -1) {
                 if (!contagem[hotel.id]) {
                     contagem[hotel.id] = { hotel: hotel, vezes: 0 };
                 }
@@ -85,15 +90,6 @@ function exibirRecomendacoes() {
     var secao = document.getElementById('recomendacoesSection');
     var container = document.getElementById('recomendacoesContainer');
 
-    // Logs de diagnóstico para verificar porque as recomendações podem não aparecer
-    console.log('recom: currentUser (raw) =', localStorage.getItem('currentUser'));
-    try {
-        console.log('recom: users count =', JSON.parse(localStorage.getItem('users') || '[]').length);
-    } catch (e) {
-        console.log('recom: erro ao parse users:', e);
-    }
-    console.log('recom: resolved user =', user);
-
     if (!user) {
         secao.style.display = 'none';
         return;
@@ -112,7 +108,7 @@ function exibirRecomendacoes() {
         html += '<div class="col-md-4"><div class="card h-100 card-hover">' +
             '<img src="' + h.imagem + '" class="card-img-top" alt="' + h.nome + '">' +
             '<div class="card-body"><div class="d-flex justify-content-between align-items-start mb-2">' +
-            '<h5 class="card-title mb-0">' + h.nome +
+            '<h5 class="card-title mb-0">' + h.nome + '</h5></div>' +
             '<p class="text-muted small mb-2">' + h.localizacao + '</p>' +
             '<p class="card-text small">' + h.descricao + '</p>' +
             '<div class="d-flex justify-content-between align-items-center mt-3">' +
