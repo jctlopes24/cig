@@ -44,6 +44,21 @@ if (hotel) {
 // Função para redirecionar para página de reserva
 function redirecionarParaReserva(dadosReserva) {
     // Salvar dados no localStorage
+    
+    // Se existirem dados de pesquisa (checkin/checkout/hospedes), fundimos com os dados da reserva
+    try {
+        const searchDataStr = localStorage.getItem('searchData');
+        if (searchDataStr) {
+            const searchData = JSON.parse(searchDataStr);
+            // Só copiar campos relevantes se existirem
+            if (searchData.checkin) dadosReserva.checkin = searchData.checkin;
+            if (searchData.checkout) dadosReserva.checkout = searchData.checkout;
+            if (searchData.hospedes) dadosReserva.hospedes = searchData.hospedes;
+        }
+    } catch (e) {
+        console.warn('Erro ao ler searchData para pré-preenchimento:', e);
+    }
+
     localStorage.setItem('reservaData', JSON.stringify(dadosReserva));
     // Redirecionar para página de reserva
     window.location.href = 'reserva.html?id=' + id;
