@@ -91,8 +91,12 @@ document.addEventListener('DOMContentLoaded', function () {
     botoesReservar.forEach(function (botao) {
         botao.addEventListener('click', function (e) {
             e.preventDefault();
-            const quartoNome = this.getAttribute('data-quarto');
-            const quartoPreco = this.getAttribute('data-preco');
+            var quartoNomeRaw = this.getAttribute('data-quarto') || '';
+            var quartoPreco = this.getAttribute('data-preco') || '';
+
+        
+            // Se data-quarto vier como "Quarto Single" transformamos para "Single"
+            var quartoNome = quartoNomeRaw.replace(/^Quarto\s*/i, '').trim();
 
             if (!id) {
                 alert('Erro: ID do hotel não encontrado.');
