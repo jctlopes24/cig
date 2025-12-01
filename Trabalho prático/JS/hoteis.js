@@ -1,13 +1,13 @@
 
 // Dados dos hotéis
 var hoteis = {
-    "vista-mar": {
-        nome: "Hotel Vista Mar",
+    "Portocal": {
+        nome: "Hotel Portocal",
         tipo: "Hotel",
         localizacao: "Porto, Portugal",
         estrelas: "★★★★☆",
         rating: "4.5/5 (245 avaliações)",
-        descricao: `O Hotel Vista Mar oferece uma experiência única com vista privilegiada para o oceano Atlântico.
+        descricao: `O Hotel Portocal oferece uma experiência única com vista privilegiada para o oceano Atlântico.
                         Localizado no coração do Porto, a poucos minutos das principais atrações turísticas, o hotel
                         combina conforto moderno com hospitalidade tradicional portuguesa.
       `,

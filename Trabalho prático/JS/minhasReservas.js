@@ -108,7 +108,7 @@ function carregarReservas() {
     const currentUser = JSON.parse(currentUserStr);
     const reservas = JSON.parse(localStorage.getItem('reservas') || '[]');
     
-    // Filtrar reservas do usuário atual
+    // Filtrar reservas do user atual
     const minhasReservas = reservas.filter(r => r.email === currentUser.email);
     
     if (minhasReservas.length === 0) {

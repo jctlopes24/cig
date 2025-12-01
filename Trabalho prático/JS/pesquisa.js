@@ -2,8 +2,8 @@
 // Dados dos alojamentos
 const hoteis = [
     {
-        id: 'vista-mar',
-        nome: 'Hotel Vista Mar',
+        id: 'Portocal',
+        nome: 'Portocal',
         cidade: 'Porto',
         localizacao: 'Porto, Portugal',
         tipo: 'Hotel',

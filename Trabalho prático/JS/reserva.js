@@ -1,7 +1,7 @@
 // Hotéis disponíveis
 const hoteis = {
-    "vista-mar": {
-        nome: "Hotel Vista Mar",
+    "Portocal": {
+        nome: "Portocal",
         localizacao: "Porto, Portugal",
         estrelas: "★★★★☆",
         imagem: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
@@ -151,7 +151,7 @@ function carregarHotel() {
         atualizarPrecos();
     }
 
-    // Pré-preencher dados do utilizador se estiver logado
+    // Pré-preencher dados do user se estiver logado
     const currentUserStr = localStorage.getItem('currentUser');
     if (currentUserStr) {
         const currentUser = JSON.parse(currentUserStr);
@@ -228,7 +228,7 @@ function confirmarReserva() {
     reservas.push(reserva);
     localStorage.setItem('reservas', JSON.stringify(reservas));
 
-    // Atualizar histórico do usuário se estiver logado
+    // Atualizar histórico do user se estiver logado
     const currentUserStr = localStorage.getItem('currentUser');
     if (currentUserStr) {
         const currentUser = JSON.parse(currentUserStr);

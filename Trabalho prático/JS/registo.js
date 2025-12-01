@@ -58,7 +58,7 @@
                 return;
             }
             
-            // Criar novo utilizador com perfil
+            // Criar novo user com perfil
             const newUser = {
                 nome: nome,
                 apelido: apelido,
@@ -77,11 +77,11 @@
                 }
             };
             
-            // Adicionar à lista de utilizadores
+            // Adicionar à lista de users
             users.push(newUser);
             localStorage.setItem('users', JSON.stringify(users));
             
-            // Guardar utilizador atual
+            // Guardar user atual
             localStorage.setItem('currentUser', JSON.stringify({
                 email: newUser.email,
                 nome: newUser.nomeCompleto
