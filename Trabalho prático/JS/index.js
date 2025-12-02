@@ -145,7 +145,7 @@ function validarDatas() {
         hoje.setHours(0, 0, 0, 0);
 
         if (dataCheckin < hoje) {
-            alert('A data de check-in não pode ser no passado.');
+            alert('A data de check-in não pode ser anterior à atual.');
             return false;
         }
 

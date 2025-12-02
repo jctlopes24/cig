@@ -103,11 +103,40 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            redirecionarParaReserva({
+            // Preparar dados da reserva
+            const dadosReserva = {
                 hotelId: id,
                 tipoQuarto: quartoNome + ' - €' + quartoPreco,
                 preco: quartoPreco
-            });
+            };
+
+            // Se o utilizador não estiver autenticado, guardar a reserva temporariamente
+            // e pedir para iniciar sessão. Após login será redirecionado para a página de reserva.
+            try {
+                // getCurrentUser() vem de comum.js
+                const user = (typeof getCurrentUser === 'function') ? getCurrentUser() : null;
+                if (!user) {
+                    // fundir com searchData (se existir) para pré-preenchimento
+                    const searchDataStr = localStorage.getItem('searchData');
+                    if (searchDataStr) {
+                        const searchData = JSON.parse(searchDataStr);
+                        if (searchData.checkin) dadosReserva.checkin = searchData.checkin;
+                        if (searchData.checkout) dadosReserva.checkout = searchData.checkout;
+                        if (searchData.hospedes) dadosReserva.hospedes = searchData.hospedes;
+                    }
+                    // guardar reserva temporária e definir redirect pós-login
+                    localStorage.setItem('reservaData', JSON.stringify(dadosReserva));
+                    localStorage.setItem('postLoginRedirect', 'reserva.html?id=' + id);
+                    // redirecionar para login
+                    window.location.href = 'login.html';
+                    return;
+                }
+            } catch (e) {
+                console.warn('Erro ao verificar utilizador antes de reservar:', e);
+            }
+
+            // Se estiver autenticado, prosseguir normalmente
+            redirecionarParaReserva(dadosReserva);
         });
     });
 });
