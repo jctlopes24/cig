@@ -110,8 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 preco: quartoPreco
             };
 
-            // Se o utilizador não estiver autenticado, guardar a reserva temporariamente
-            // e pedir para iniciar sessão. Após login será redirecionado para a página de reserva.
             try {
                 // getCurrentUser() vem de comum.js
                 const user = (typeof getCurrentUser === 'function') ? getCurrentUser() : null;
