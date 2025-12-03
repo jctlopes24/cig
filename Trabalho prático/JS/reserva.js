@@ -6,7 +6,7 @@ const hoteis = {
         estrelas: "★★★★☆",
         imagem: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
         quartos: [
-            { nome: "Single", preco: 75 },
+            { nome: "Single", preco: 76 },
             { nome: "Double", preco: 120 },
             { nome: "Twin", preco: 110 }
         ]
@@ -95,7 +95,7 @@ function atualizarPrecos() {
 // Carregar hotel
 function carregarHotel() {
     const params = new URLSearchParams(window.location.search);
-    const id = params.get('id') || 'vista-mar';
+    const id = params.get('id') || 'Portocal';
     const hotel = hoteis[id];
 
     if (!hotel) {
@@ -151,7 +151,7 @@ function carregarHotel() {
         atualizarPrecos();
     }
 
-    // Pré-preencher dados do user se estiver logado
+    // Pré-preencher dados do user tiver sessão iniciada
     const currentUserStr = localStorage.getItem('currentUser');
     if (currentUserStr) {
         const currentUser = JSON.parse(currentUserStr);
@@ -228,7 +228,7 @@ function confirmarReserva() {
     reservas.push(reserva);
     localStorage.setItem('reservas', JSON.stringify(reservas));
 
-    // Atualizar histórico do user se estiver logado
+    // Atualizar histórico do user se tiver sessão iniciada
     const currentUserStr = localStorage.getItem('currentUser');
     if (currentUserStr) {
         const currentUser = JSON.parse(currentUserStr);

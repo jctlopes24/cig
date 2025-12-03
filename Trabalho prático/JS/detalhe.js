@@ -45,7 +45,7 @@ if (hotel) {
 function redirecionarParaReserva(dadosReserva) {
     // Salvar dados no localStorage
     
-    // Se existirem dados de pesquisa (checkin/checkout/hospedes), fundimos com os dados da reserva
+    // Se existirem dados de pesquisa (checkin/checkout/hospedes), adicionamos aos dados da reserva
     try {
         const searchDataStr = localStorage.getItem('searchData');
         if (searchDataStr) {
@@ -60,6 +60,7 @@ function redirecionarParaReserva(dadosReserva) {
     }
 
     localStorage.setItem('reservaData', JSON.stringify(dadosReserva));
+    
     // Redirecionar para página de reserva
     window.location.href = 'reserva.html?id=' + id;
 }
@@ -122,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (searchData.checkout) dadosReserva.checkout = searchData.checkout;
                         if (searchData.hospedes) dadosReserva.hospedes = searchData.hospedes;
                     }
-                    // guardar reserva temporária e definir redirect pós-login
+                    // guardar reserva temporária e definir redirect pós login
                     localStorage.setItem('reservaData', JSON.stringify(dadosReserva));
                     localStorage.setItem('postLoginRedirect', 'reserva.html?id=' + id);
                     // redirecionar para login

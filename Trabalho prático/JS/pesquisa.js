@@ -174,8 +174,8 @@ function exibirResultados() {
                     // Adicionar pesquisa
                     users[i].perfil.historicoPesquisas.push(criterios);
                     
-                    // Limitar a 20 pesquisas
-                    if (users[i].perfil.historicoPesquisas.length > 20) {
+                    // Limitar a 10 pesquisas
+                    if (users[i].perfil.historicoPesquisas.length > 10) {
                         users[i].perfil.historicoPesquisas.shift();
                     }
                     

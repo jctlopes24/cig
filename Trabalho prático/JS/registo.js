@@ -49,7 +49,7 @@
                 return;
             }
             
-            // Obter utilizadores do localStorage
+            // Obter users do localStorage
             const users = JSON.parse(localStorage.getItem('users') || '[]');
             
             // Verificar se o email já existe

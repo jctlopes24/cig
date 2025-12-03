@@ -28,7 +28,7 @@ function fazerLogout() {
 }
 
 /**
- * Obtém o utilizador atual completo do localStorage
+ * Obtém o user atual completo do localStorage
  * @returns {Object|null} Dados completos do utilizador ou null
  */
 function getCurrentUser() {
