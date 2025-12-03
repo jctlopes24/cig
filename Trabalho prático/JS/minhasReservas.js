@@ -184,18 +184,6 @@ function verDetalhes(reservaId) {
     new bootstrap.Modal(document.getElementById('detalhesModal')).show();
 }
 
-// Função para cancelar reserva
-function cancelarReserva(reservaId) {
-    if (!confirm('Tem certeza que deseja cancelar esta reserva?')) return;
-
-    let reservas = JSON.parse(localStorage.getItem('reservas') || '[]');
-    reservas = reservas.filter(r => r.id !== reservaId);
-    localStorage.setItem('reservas', JSON.stringify(reservas));
-
-    alert('Reserva cancelada com sucesso!');
-    carregarReservas();
-}
-
 // Executar quando a página carregar
 document.addEventListener('DOMContentLoaded', function() {
     const isAutenticado = atualizarNavbar();
